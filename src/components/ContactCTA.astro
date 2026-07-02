@@ -1,0 +1,68 @@
+---
+import business from '../data/business.json';
+
+interface Props {
+  headline?: string;
+  subtext?: string;
+  variant?: 'default' | 'dark';
+}
+
+const {
+  headline = 'Ready to get started?',
+  subtext = 'Contact us today for a free estimate. We respond within one business day.',
+  variant = 'default',
+} = Astro.props;
+
+const isDark = variant === 'dark';
+---
+
+<section
+  class:list={[
+    'py-16',
+    isDark ? 'bg-brand-700' : 'bg-brand-50',
+  ]}
+>
+  <div class="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
+    <h2
+      class:list={[
+        'text-2xl font-bold sm:text-3xl',
+        isDark ? 'text-white' : 'text-gray-900',
+      ]}
+    >
+      {headline}
+    </h2>
+    <p
+      class:list={[
+        'mx-auto mt-4 max-w-2xl text-base sm:text-lg',
+        isDark ? 'text-brand-100' : 'text-gray-600',
+      ]}
+    >
+      {subtext}
+    </p>
+    <div class="mt-8 flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-4">
+      <a
+        href="/contact"
+        class:list={[
+          'inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-lg px-6 py-3 text-sm font-semibold transition-colors',
+          isDark
+            ? 'bg-white text-brand-700 hover:bg-brand-50'
+            : 'bg-brand-600 text-white hover:bg-brand-700',
+        ]}
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href={`tel:${business.phone.replace(/\D/g, '')}`}
+        class:list={[
+          'inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-lg border px-6 py-3 text-sm font-semibold transition-colors',
+          isDark
+            ? 'border-white/30 text-white hover:bg-white/10'
+            : 'border-brand-200 text-brand-700 hover:bg-brand-100',
+        ]}
+      >
+        <span class="sm:hidden">Call Now</span>
+        <span class="hidden sm:inline">Call {business.phone}</span>
+      </a>
+    </div>
+  </div>
+</section>

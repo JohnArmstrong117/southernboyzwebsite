@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { Image } from 'astro:assets';
+import storyPhoto from '../assets/images/southernboyzsmilingworker.jpg';
+import business from '../data/business.json';
+
+const pageTitle = `About Us | ${business.name}`;
+const pageDescription = `Learn about ${business.name} — ${business.about.intro}`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header />
+  <main>
+    <!-- Page hero -->
+    <section class="bg-gray-50 py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl">{business.about.headline}</h1>
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-gray-600">{business.about.intro}</p>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-10 lg:gap-12">
+          <div class="w-full shrink-0 md:w-56 lg:w-64 xl:w-72">
+            <Image
+              src={storyPhoto}
+              alt="Southern Boyz team member working on a plumbing job at a Tacoma home"
+              class="w-full rounded-xl shadow-[-12px_8px_24px_rgba(0,0,0,0.18)] ring-1 ring-gray-200"
+              widths={[224, 288, 320]}
+              sizes="(min-width: 1280px) 288px, (min-width: 768px) 224px, 100vw"
+            />
+          </div>
+          <div class="w-full md:min-w-0 md:flex-1">
+            <h2 class="text-2xl font-bold text-gray-900">Our Story</h2>
+            <p class="mt-4 text-lg leading-relaxed text-gray-600">{business.about.story}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="bg-gray-50 py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-3xl font-bold text-gray-900">Why Choose Us</h2>
+        <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            business.about.values.map((value) => (
+              <div class="rounded-xl bg-white p-8 shadow-sm">
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-700">
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-gray-900">{value.title}</h3>
+                <p class="mt-2 text-gray-600">{value.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA
+      headline="Let's work together"
+      subtext="Whether it's a small repair or a major project, we're here to help."
+    />
+  </main>
+  <Footer />
+</BaseLayout>

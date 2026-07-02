@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { Image } from 'astro:assets';
+import heroPhoto from '../assets/images/southernboyzphoto.webp';
+import business from '../data/business.json';
+---
+
+<BaseLayout>
+  <Header />
+  <main>
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-brand-700 to-brand-900 text-white">
+      <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <div class="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-10 lg:gap-12">
+          <div class="w-full md:min-w-0 md:flex-1">
+            <p class="text-sm font-semibold uppercase tracking-wider text-brand-200">
+              Serving {business.address.city} &amp; surrounding areas
+            </p>
+            <h1 class="mt-4 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+              {business.tagline}
+            </h1>
+            <p class="mt-6 text-lg leading-relaxed text-brand-100">
+              {business.description}
+            </p>
+            <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="/contact"
+                class="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-brand-700 transition-colors hover:bg-brand-50"
+              >
+                Get a Free Quote
+              </a>
+              <a
+                href="/services"
+                class="inline-flex items-center justify-center rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                View Our Services
+              </a>
+            </div>
+          </div>
+          <div class="w-full shrink-0 md:w-56 lg:w-64 xl:w-72">
+            <Image
+              src={heroPhoto}
+              alt="The Southern Boyz team — local plumbing and general contracting professionals in Tacoma"
+              class="w-full rounded-xl shadow-[12px_8px_24px_rgba(0,0,0,0.25)] ring-1 ring-white/10"
+              widths={[224, 288, 320]}
+              sizes="(min-width: 1280px) 288px, (min-width: 768px) 224px, 100vw"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services preview -->
+    <section class="py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold text-gray-900">Our Services</h2>
+          <p class="mx-auto mt-4 max-w-2xl text-gray-600">
+            From emergency repairs to planned upgrades, we handle it all with care and expertise.
+          </p>
+        </div>
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {
+            business.services.map((service) => (
+              <ServiceCard
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+              />
+            ))
+          }
+        </div>
+        <div class="mt-10 text-center">
+          <a
+            href="/services"
+            class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700"
+          >
+            See all services
+            <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About preview -->
+    <section class="bg-gray-50 py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900">{business.about.headline}</h2>
+            <p class="mt-4 text-lg leading-relaxed text-gray-600">{business.about.intro}</p>
+            <a
+              href="/about"
+              class="mt-6 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700"
+            >
+              Learn more about us
+              <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            {
+              business.about.values.map((value) => (
+                <div class="rounded-xl bg-white p-5 shadow-sm">
+                  <h3 class="font-semibold text-gray-900">{value.title}</h3>
+                  <p class="mt-2 text-sm text-gray-600">{value.description}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-3xl font-bold text-gray-900">What Our Customers Say</h2>
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            business.testimonials.map((testimonial) => (
+              <blockquote class="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+                <div class="flex gap-0.5 text-yellow-400" aria-label={`${testimonial.rating} out of 5 stars`}>
+                  {
+                    Array.from({ length: testimonial.rating }).map(() => (
+                      <svg class="h-5 w-5 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))
+                  }
+                </div>
+                <p class="mt-4 text-gray-600">&ldquo;{testimonial.text}&rdquo;</p>
+                <footer class="mt-4 text-sm font-semibold text-gray-900">&mdash; {testimonial.name}</footer>
+              </blockquote>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA variant="dark" />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import business from '../data/business.json';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+const fullAddress = `${business.address.street}, ${business.address.city}, ${business.address.state} ${business.address.zip}`;
+---
+
+<div class:list={['overflow-hidden rounded-xl border border-gray-200 shadow-sm', className]}>
+  <iframe
+    title={`Map showing location of ${business.name}`}
+    src={business.mapEmbedUrl}
+    width="100%"
+    height="400"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    class="block w-full"
+  ></iframe>
+  <div class="border-t border-gray-100 bg-gray-50 px-4 py-3 text-sm text-gray-600">
+    <p class="font-medium text-gray-800">{business.name}</p>
+    <p>{fullAddress}</p>
+  </div>
+</div>

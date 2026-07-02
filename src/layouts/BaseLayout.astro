@@ -1,0 +1,42 @@
+---
+import business from '../data/business.json';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = business.seo.title,
+  description = business.seo.description,
+} = Astro.props;
+
+const fullTitle = title === business.seo.title ? title : `${title} | ${business.name}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{fullTitle}</title>
+  </head>
+  <body class="flex min-h-screen flex-col bg-white font-sans text-gray-800 antialiased">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

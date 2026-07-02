@@ -1,0 +1,88 @@
+{
+  "name": "Southern Boyz General Contracting & Plumbing LLP",
+  "tagline": "Tacoma plumbing and home contracting you can count on",
+  "description": "Southern Boyz is a local, Black-owned general contracting and plumbing company serving Tacoma and nearby communities. From clogged drains and leak repairs to whole-house replumbing and home remodels, we deliver honest work at a fair price.",
+  "phone": "(253) 326-3845",
+  "email": "",
+  "address": {
+    "street": "5804 S Sheridan Ave",
+    "city": "Tacoma",
+    "state": "WA",
+    "zip": "98408"
+  },
+  "hours": [
+    { "days": "Every day", "hours": "Open 24 hours" }
+  ],
+  "social": {
+    "facebook": "",
+    "instagram": "https://www.instagram.com/southernboyzgcp/",
+    "google": ""
+  },
+  "seo": {
+    "title": "Southern Boyz General Contracting & Plumbing | Tacoma, WA",
+    "description": "Local Black-owned plumbing and general contracting in Tacoma. Drain cleaning, leak repair, replumbing, remodeling, and more. Call (253) 326-3845 — available 24 hours."
+  },
+  "about": {
+    "headline": "Local contractors who show up and get it done",
+    "intro": "Southern Boyz is a Tacoma-based, Black-owned general contracting and plumbing business built on honest work, fair pricing, and treating every home with care.",
+    "story": "Led by Kerry, Southern Boyz handles jobs big and small — from a leaking outdoor faucet or a stubborn drain to framing, remodeling, and whole-house replumbing. Customers know us for showing up on time, explaining the work as we go, and leaving the job site clean when we're finished.",
+    "values": [
+      {
+        "title": "Honest & Straightforward",
+        "description": "We tell you what the job actually needs — no upselling, no runaround. Kerry and the team take pride in doing the work right."
+      },
+      {
+        "title": "Fair, Upfront Pricing",
+        "description": "You get a clear quote before work begins. Our customers consistently choose us for quality work at a reasonable rate."
+      },
+      {
+        "title": "Responsive Local Service",
+        "description": "Based in Tacoma, we respond quickly — often same day — and work around your schedule to get plumbing and contracting problems solved."
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "plumbing-repairs",
+      "title": "Plumbing Repairs",
+      "description": "Toilet repair, faucet repair, leak detection, shut-off valves, outdoor faucets, and garbage disposal replacement.",
+      "icon": "🔧"
+    },
+    {
+      "id": "drain-cleaning",
+      "title": "Drain & Sewer Cleaning",
+      "description": "Clogged drains, bathroom line clearing, and deep blockages — from the kitchen sink to the main line.",
+      "icon": "🚿"
+    },
+    {
+      "id": "repiping",
+      "title": "Repiping & Upgrades",
+      "description": "Whole-house replumbing, valve upgrades, and plumbing improvements for older Tacoma homes.",
+      "icon": "🏗️"
+    },
+    {
+      "id": "general-contracting",
+      "title": "General Contracting",
+      "description": "Home remodeling, framing, and general construction — from small repairs to larger renovation projects.",
+      "icon": "🏠"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Tom T.",
+      "text": "Kerry replaced our outdoor faucet and a 37-year-old shut-off valve, then cleared drains that had never been professionally cleaned in 27 years. Courteous, professional, and fairly priced — I would not hesitate to hire him again.",
+      "rating": 5
+    },
+    {
+      "name": "Mon Z.",
+      "text": "Kerry responded quickly and came the same day for a garbage disposal repair that turned out to be much more complex than I expected. Fair price, thorough job, and he even found a clog 30 feet down the line.",
+      "rating": 5
+    },
+    {
+      "name": "R.M.",
+      "text": "Kerry got back to me incredibly fast, gave a cost-effective quote, and finished the work the same day. He walked us through everything he was doing — we've never felt so taken care of by a contractor.",
+      "rating": 5
+    }
+  ],
+  "mapEmbedUrl": "https://maps.google.com/maps?q=5804+S+Sheridan+Ave,+Tacoma,+WA+98408&output=embed"
+}

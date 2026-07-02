@@ -1,0 +1,119 @@
+---
+import business from '../data/business.json';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-sm">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+    <a href="/" class="flex min-w-0 shrink flex-col">
+      <span class="truncate text-lg font-bold text-brand-700 sm:text-xl">{business.name}</span>
+      <span class="hidden truncate text-xs text-gray-500 lg:block">{business.tagline}</span>
+    </a>
+
+    <nav class="hidden shrink-0 items-center gap-6 lg:flex" aria-label="Main navigation">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'text-sm font-medium transition-colors hover:text-brand-600',
+              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                ? 'text-brand-600'
+                : 'text-gray-600',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden shrink-0 items-center gap-3 md:flex">
+      <a
+        href={`tel:${business.phone.replace(/\D/g, '')}`}
+        class="whitespace-nowrap text-sm font-medium text-gray-600 hover:text-brand-600"
+      >
+        {business.phone}
+      </a>
+      <a
+        href="/contact"
+        class="whitespace-nowrap rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+      >
+        Get a Quote
+      </a>
+    </div>
+
+    <button
+      id="mobile-menu-btn"
+      type="button"
+      class="inline-flex shrink-0 items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100 lg:hidden"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path id="menu-icon-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <path id="menu-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    class="hidden border-t border-gray-100 bg-white px-4 py-4 lg:hidden"
+    aria-label="Mobile navigation"
+  >
+    <div class="flex flex-col gap-1">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                ? 'bg-brand-50 text-brand-700'
+                : 'text-gray-600 hover:bg-gray-50',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href={`tel:${business.phone.replace(/\D/g, '')}`}
+        class="mt-2 rounded-lg px-3 py-2 text-sm font-medium text-gray-600"
+      >
+        {business.phone}
+      </a>
+      <a
+        href="/contact"
+        class="mt-2 rounded-lg bg-brand-600 px-3 py-2 text-center text-sm font-semibold text-white"
+      >
+        Get a Quote
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', isOpen);
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

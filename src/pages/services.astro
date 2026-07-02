@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import business from '../data/business.json';
+
+const pageTitle = `Services | ${business.name}`;
+const pageDescription = `Explore the home services offered by ${business.name} — plumbing, electrical, HVAC, and general repair in ${business.address.city}.`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header />
+  <main>
+    <!-- Page hero -->
+    <section class="bg-gray-50 py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl">Our Services</h1>
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-gray-600">
+          We offer a full range of home services to keep your property in top condition.
+          Every job is handled by licensed professionals with upfront pricing.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services grid -->
+    <section class="py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 sm:grid-cols-2">
+          {
+            business.services.map((service) => (
+              <ServiceCard
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="bg-gray-50 py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-3xl font-bold text-gray-900">How It Works</h2>
+        <div class="mt-12 grid gap-8 sm:grid-cols-3">
+          <div class="text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-600 text-lg font-bold text-white">1</div>
+            <h3 class="mt-4 font-semibold text-gray-900">Contact Us</h3>
+            <p class="mt-2 text-sm text-gray-600">Call or fill out our form to describe your project.</p>
+          </div>
+          <div class="text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-600 text-lg font-bold text-white">2</div>
+            <h3 class="mt-4 font-semibold text-gray-900">Get an Estimate</h3>
+            <p class="mt-2 text-sm text-gray-600">We provide a clear, written quote with no hidden fees.</p>
+          </div>
+          <div class="text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-600 text-lg font-bold text-white">3</div>
+            <h3 class="mt-4 font-semibold text-gray-900">We Get It Done</h3>
+            <p class="mt-2 text-sm text-gray-600">Our team completes the work on time and to your satisfaction.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA
+      headline="Need a service not listed?"
+      subtext="Reach out — we handle a wide range of home repair and maintenance projects."
+    />
+  </main>
+  <Footer />
+</BaseLayout>
