@@ -7,7 +7,7 @@ import ContactCTA from '../components/ContactCTA.astro';
 import business from '../data/business.json';
 
 const pageTitle = `Services | ${business.name}`;
-const pageDescription = `Explore the home services offered by ${business.name} â€” plumbing, electrical, HVAC, and general repair in ${business.address.city}.`;
+const pageDescription = `Explore plumbing and general contracting services from ${business.name} in ${business.address.city}.`;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -18,8 +18,12 @@ const pageDescription = `Explore the home services offered by ${business.name} â
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl">Our Services</h1>
         <p class="mt-6 max-w-3xl text-lg leading-relaxed text-gray-600">
-          We offer a full range of home services to keep your property in top condition.
-          Every job is handled by licensed professionals with upfront pricing.
+          From drain cleaning and leak repairs to whole-house replumbing and home remodeling, we handle a wide range of plumbing and contracting work in Tacoma.
+          {
+            business.license
+              ? ` We are a Washington State licensed general contractor (${business.license.issuer} #${business.license.number}).`
+              : ''
+          }
         </p>
       </div>
     </section>

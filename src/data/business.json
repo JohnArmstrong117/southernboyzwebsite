@@ -20,11 +20,16 @@
   },
   "seo": {
     "title": "Southern Boyz General Contracting & Plumbing | Tacoma, WA",
-    "description": "Local Black-owned plumbing and general contracting in Tacoma. Drain cleaning, leak repair, replumbing, remodeling, and more. Call (253) 326-3845 — available 24 hours."
+    "description": "Washington State licensed general contractor and plumbing services in Tacoma. Drain cleaning, leak repair, replumbing, remodeling, and more. Call (253) 326-3845 — available 24 hours."
+  },
+  "license": {
+    "number": "SOUTHBG740JM",
+    "issuer": "WA DLI",
+    "type": "Construction Contractor - General"
   },
   "about": {
     "headline": "Local contractors who show up and get it done",
-    "intro": "Southern Boyz is a Tacoma-based, Black-owned general contracting and plumbing business built on honest work, fair pricing, and treating every home with care.",
+    "intro": "Southern Boyz is a Tacoma-based, Black-owned general contracting and plumbing business built on honest work, fair pricing, and treating every home with care. We hold a Washington State general contractor license through the Department of Labor & Industries (WA DLI).",
     "story": "Led by Kerry, Southern Boyz handles jobs big and small — from a leaking outdoor faucet or a stubborn drain to framing, remodeling, and whole-house replumbing. Customers know us for showing up on time, explaining the work as we go, and leaving the job site clean when we're finished.",
     "values": [
       {
@@ -38,6 +43,10 @@
       {
         "title": "Responsive Local Service",
         "description": "Based in Tacoma, we respond quickly — often same day — and work around your schedule to get plumbing and contracting problems solved."
+      },
+      {
+        "title": "Washington State Licensed",
+        "description": "Licensed Construction Contractor — General with the Washington Department of Labor & Industries (License #SOUTHBG740JM)."
       }
     ]
   },
